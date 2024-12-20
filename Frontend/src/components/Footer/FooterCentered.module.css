@@ -1,0 +1,41 @@
+.footer {
+  margin-top: 0px; /*Burayı sor!!!*/
+  border-top: 1px solid
+    light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+  background: linear-gradient(
+    to right,
+    var(--mantine-color-gray-1),
+    var(--mantine-color-gray-3)
+  );
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--mantine-spacing-md) var(--mantine-spacing-md);
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+  }
+}
+
+.links {
+  display: flex;
+  gap: var(--mantine-spacing-md);
+
+  @media (max-width: 576px) {
+    margin-top: var(--mantine-spacing-lg);
+    margin-bottom: var(--mantine-spacing-sm);
+  }
+}
+
+.linkWithBackground {
+  padding: 5px 10px;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.05
+  ); /* Or any other desired background color */
+}

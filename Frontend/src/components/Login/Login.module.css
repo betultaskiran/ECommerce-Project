@@ -1,0 +1,44 @@
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f3f4f6; /* Background rengi veya gradient bir arka plan */
+}
+
+.form-container {
+  width: 100%;
+  max-width: 400px; /* Maksimum form genişliği */
+  padding: 2rem; /* İç padding */
+  background-color: #ffffff; /* Form arka plan rengi */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölgeleme */
+}
+
+.notification {
+  margin-bottom: 1rem;
+}
+.loginContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 80px);
+  width: 100%;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.input-label {
+  font-size: 0.9rem;
+  color: #4a4a4a; /* Input label rengi */
+}
+
+.input-field {
+  margin-bottom: 1rem;
+}
+
+.submit-button {
+  width: 100%; /* Genişliği tam sayfa genişliği */
+}

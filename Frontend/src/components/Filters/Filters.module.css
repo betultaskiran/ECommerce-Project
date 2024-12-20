@@ -1,0 +1,22 @@
+/* Filters.module.css */
+
+.categoryTypeBox {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.paperTitle {
+  margin-bottom: 0.5rem;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.checkboxLabel .mantine-Checkbox-inner {
+  display: flex;
+  align-items: center;
+}

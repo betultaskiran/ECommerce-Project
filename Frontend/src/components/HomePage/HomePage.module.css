@@ -1,0 +1,32 @@
+.pageContainer {
+  padding: 30px; /* Padding for the entire page */
+  background-color: #f9f9f9; /* Light background for better contrast */
+  padding-top: 0px;
+}
+
+.header {
+  text-align: center;
+  background-color: white; /* Set your preferred background color here */
+  height: 70px;
+  margin-top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px; /* Space below the header */
+}
+
+.carouselContainer {
+  margin-bottom: 30px; /* Space between the carousel and the grid */
+  margin-top: 35px;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Three columns */
+  gap: 20px; /* Space between grid items */
+  margin-bottom: 30px; /* Space below the grid */
+}

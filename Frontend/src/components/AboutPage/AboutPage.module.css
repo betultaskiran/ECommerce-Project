@@ -1,0 +1,53 @@
+.aboutSection {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.imageContainer {
+  flex: 1;
+}
+
+.image {
+  width: 100%;
+  height: 500px;
+  max-width: 400px;
+  margin-top: 35px;
+}
+
+.textContainer {
+  flex: 2;
+  padding-left: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #e76f51; /* Teal color for the main header */
+}
+
+h2 {
+  text-align: center;
+  color: #e76f51; /* Burnt orange color for subheaders */
+}
+
+h3 {
+  color: #2a9d8f; /* Dark blue-green color for the Why Choose Us section headers */
+  margin-bottom: 10px;
+}
+
+.whyChooseUsSection {
+  text-align: center;
+}
+
+.boxContainer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.box {
+  width: 30%;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+}
