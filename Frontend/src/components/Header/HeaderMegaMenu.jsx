@@ -30,12 +30,15 @@ import {
   UnstyledButton,
   useMantineTheme,
   Menu,
+  Popover,
   ActionIcon,
+  Flex,
 } from "@mantine/core";
+import { useContext, useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
 import { useNavigate } from "react-router-dom";
 import classes from "./HeaderMegaMenu.module.css";
-
+import { Context } from "../../App";
 const mockdata = [
   {
     icon: IconCode,
@@ -70,10 +73,13 @@ const mockdata = [
 ];
 
 export function HeaderMegaMenu() {
+  const ctx = useContext(Context);
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const [searchOpened, { toggle: toggleSearch }] = useDisclosure(false);
+  const [opened, setOpened] = useState(false);
+  const [searchTimeout, setSearchTimeout] = useState(null);
   const theme = useMantineTheme();
   const navigate = useNavigate();
   const links = mockdata.map((item) => (
@@ -94,11 +100,26 @@ export function HeaderMegaMenu() {
     </UnstyledButton>
   ));
 
+  const handleSearch = (val) => {
+    if (searchTimeout) {
+      clearTimeout(searchTimeout);
+      setSearchTimeout(null);
+    }
+    let timeout = setTimeout(() => {
+      ctx.setSearch(val);
+    }, 500);
+    setSearchTimeout(timeout);
+  };
+
   return (
-    <Box pb={120}>
+    <Box>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
-          <Button>LOGO</Button>
+          <div
+            style={{ fontSize: "24px", color: "#034657", fontWeight: "bold" }}
+          >
+            BETALİVA
+          </div>
 
           <Group h="100%" gap={0} visibleFrom="sm">
             <a href="#" className={classes.link} onClick={() => navigate("/")}>
@@ -137,6 +158,9 @@ export function HeaderMegaMenu() {
                 placeholder="Arama yapın..."
                 icon={<IconSearch size={16} />}
                 size="sm"
+                onInput={(e) => {
+                  handleSearch(e.target.value);
+                }}
                 className={classes.searchInput}
               />
             )}
@@ -145,9 +169,54 @@ export function HeaderMegaMenu() {
               <IconHeart size={24} />
             </ActionIcon>
             {/* Cart Icon*/}
-            <ActionIcon size="lg" variant="transparent" color="white">
-              <IconShoppingCart size={24} />
-            </ActionIcon>
+            <Popover opened={opened} onChange={setOpened}>
+              <Popover.Target>
+                <ActionIcon
+                  size="lg"
+                  variant="transparent"
+                  onClick={(e) => setOpened(!opened)}
+                  color="white"
+                >
+                  <IconShoppingCart size={24} />
+                </ActionIcon>
+              </Popover.Target>
+              <Popover.Dropdown>
+                <div className={classes.productList}>
+                  {ctx.basket.length > 0
+                    ? ctx.basket.map((item) => (
+                        <div className={classes.productListItem}>
+                          <img
+                            src={"http://localhost:3000" + item.productImage}
+                            width={50}
+                            alt={item.productName}
+                          />
+                          <div>{item.productName}</div>
+                          <div>
+                            ${item.price} x {item.quantity}
+                          </div>
+                        </div>
+                      ))
+                    : "Hiç Ürün Eklemediniz"}
+                  <Flex gap={20} pt={20}>
+                    <Button
+                      w={"100%"}
+                      color="red"
+                      onClick={(e) => ctx.setBasket([])}
+                    >
+                      Clear
+                    </Button>
+                    <Button
+                      w={"100%"}
+                      disabled={ctx.basket.length == 0}
+                      onClick={(e) => navigate("/my-cart")}
+                    >
+                      My Cart
+                    </Button>
+                  </Flex>
+                </div>
+              </Popover.Dropdown>
+            </Popover>
+
             {/* Profile Icon with Dropdown*/}
             <Menu shadow="md" width={200}>
               <Menu.Target>
@@ -212,4 +281,3 @@ export function HeaderMegaMenu() {
     </Box>
   );
 }
-//Drawer kısmını düzenle ve mobil uyumlu yap!!!

@@ -26,7 +26,7 @@
 
 .gridContainer {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Three columns */
+  grid-template-columns: repeat(1, 12fr); /* Three columns */
   gap: 20px; /* Space between grid items */
   margin-bottom: 30px; /* Space below the grid */
 }

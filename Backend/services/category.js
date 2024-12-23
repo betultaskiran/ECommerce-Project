@@ -8,9 +8,9 @@ const categoryService = {
   },
 
   updateCategory: async (categoryData) => {
-    const { id, categoryName } = categoryData;
+    const { _id, categoryName } = categoryData;
     return await Category.findByIdAndUpdate(
-      id,
+      _id,
       { categoryName },
       { new: true }
     );

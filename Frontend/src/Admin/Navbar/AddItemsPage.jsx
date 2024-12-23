@@ -293,7 +293,7 @@ function AddItemsPage() {
 }
 
 export default AddItemsPage;*/
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   TextInput,
   NumberInput,
@@ -302,6 +302,7 @@ import {
   Container,
   Notification,
   FileInput,
+  Select, // Açılır menü için
 } from "@mantine/core";
 import { uploadClient } from "../../components/axiosClient";
 
@@ -313,6 +314,34 @@ function AddItemsPage() {
   const [image, setImage] = useState(null);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(""); // Seçilen kategori
+  const [brands, setBrands] = useState([]);
+  const [selectedBrand, setSelectedBrand] = useState("");
+
+  // Kategorileri fetch et
+  useEffect(() => {
+    fetchCategories();
+    fetchBrands();
+  }, []); // Sayfa ilk yüklendiğinde kategorileri çek
+
+  const fetchCategories = async () => {
+    try {
+      const response = await uploadClient.get("/api/category");
+      setCategories(response.data.response); // Kategori listesi
+    } catch (err) {
+      console.error("Kategoriler yüklenirken hata oluştu:", err);
+    }
+  };
+
+  const fetchBrands = async () => {
+    try {
+      const response = await uploadClient.get("/api/brand"); // Markaları almak için endpoint
+      setBrands(response.data.response); // Marka listesi
+    } catch (err) {
+      console.error("Markalar yüklenirken hata oluştu:", err);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -324,6 +353,8 @@ function AddItemsPage() {
       formData.append("description", description);
       formData.append("price", price);
       formData.append("stock", stock);
+      formData.append("categoryId", selectedCategory);
+      formData.append("brandId", selectedBrand);
       if (image) {
         formData.append("image", image);
       }
@@ -386,6 +417,30 @@ function AddItemsPage() {
           placeholder="Ürün resmi seçiniz"
           onChange={(file) => setImage(file)}
           accept="image/*"
+          required
+          mt="md"
+        />
+        <Select
+          label="Kategori"
+          placeholder="Kategori seçiniz"
+          data={categories.map((category) => ({
+            value: category._id,
+            label: category.categoryName,
+          }))}
+          value={selectedCategory}
+          onChange={setSelectedCategory}
+          required
+          mt="md"
+        />
+        <Select
+          label="Marka"
+          placeholder="Marka seçiniz"
+          data={brands.map((brand) => ({
+            value: brand._id,
+            label: brand.brandName, // Kategori yerine marka adı
+          }))}
+          value={selectedBrand} // Seçilen markayı state'e kaydediyoruz
+          onChange={setSelectedBrand} // Markayı seçtiğinde state güncellenir
           required
           mt="md"
         />

@@ -15,54 +15,52 @@ function AboutPage() {
         <div className={styles.textContainer}>
           <h1>ABOUT US</h1>
           <p>
-            Flower, medikal kozmetik ürünlerin en yenilikçi ve etkili çözüm
-            noktasıdır. Online alışverişin rahatlığını ve güvenliğini,
-            müşterilere sunduğumuz yüksek kaliteli medikal kozmetik ürünlerle
-            birleştiriyoruz.
+            Flower is the most innovative and effective solution for medical
+            cosmetic products. We combine the convenience and security of online
+            shopping with the high-quality medical cosmetic products we offer to
+            our customers.
           </p>
           <p>
-            Yıllardır, dermatologlar ve güzellik uzmanları ile işbirliği içinde
-            çalışarak, cilt sağlığına ve güzellik bakımına dair en son
-            teknolojik yenilikleri, kişisel bakım ürünlerine entegre ediyoruz.
-            Sağlıklı, güvenilir ve etkili ürünler sunarak, tüketicilerin yaşam
-            kalitesini artırmayı hedefliyoruz.
+            For years, we have been working in collaboration with dermatologists
+            and beauty experts to integrate the latest technological innovations
+            in skin health and beauty care into personal care products. By
+            offering healthy, reliable, and effective products, we aim to
+            improve the quality of life for our customers.
           </p>
-          <h2>Misyonumuz</h2>
+          <h2>Our Mission</h2>
           <p>
-            Flower'ın misyonu, müşterilere seçenek, rahatlık ve güven sağlamak.
-            Her biri uzman dermatologlar tarafından önerilen ve test edilen
-            medikal kozmetik ürünlerle, evde profesyonel cilt bakımı deneyimini
-            sunuyoruz.
+            Flower's mission is to provide customers with choice, convenience,
+            and trust. With medical cosmetic products recommended and tested by
+            expert dermatologists, we bring the professional skincare experience
+            to your home.
           </p>
         </div>
       </section>
 
       <section className={styles.whyChooseUsSection}>
-        <h2>NEDEN BİZİ SEÇMELİSİNİZ?</h2>
+        <h2>WHY CHOOSE US?</h2>
         <div className={styles.boxContainer}>
           <div className={styles.box}>
-            <h3>Kalite Güvencesi:</h3>
+            <h3>Quality Assurance:</h3>
             <p>
-              Her bir ürünümüz, etkili formülasyonlar ve yüksek kalite
-              standartları göz önünde bulundurularak özenle seçilir ve test
-              edilir.
+              Each of our products is carefully selected and tested with
+              effective formulations and high-quality standards in mind.
             </p>
           </div>
           <div className={styles.box}>
-            <h3>Rahatlık:</h3>
+            <h3>Convenience:</h3>
             <p>
-              Medikal kozmetik ürünleri keşfetmek ve satın almak, kullanıcı
-              dostu arayüzümüz sayesinde hiç bu kadar kolay olmamıştı. Zamandan
-              ve paradan tasarruf sağlamak için ihtiyaç duyduğunuz tüm bilgileri
-              ve detayları sunuyoruz.
+              Discovering and purchasing medical cosmetic products has never
+              been easier, thanks to our user-friendly interface. We provide all
+              the information and details you need to save time and money.
             </p>
           </div>
           <div className={styles.box}>
-            <h3>Mükemmel Müşteri Hizmeti:</h3>
+            <h3>Exceptional Customer Service:</h3>
             <p>
-              Medikal kozmetik alanında uzmanlaşmış profesyonellerden oluşan
-              ekibimiz, her adımda size rehberlik eder ve en iyi müşteri
-              deneyimini yaşamanızı sağlar.
+              Our team of professionals specializing in medical cosmetics guides
+              you every step of the way and ensures you have the best customer
+              experience.
             </p>
           </div>
         </div>

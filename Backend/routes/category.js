@@ -10,7 +10,10 @@ router.post(
   /*authMiddleware,*/ /*,admin, */ categoryController.createCategory
 );
 
-router.put("/update", /*authMiddleware,*/ categoryController.updateCategory);
+router.put(
+  "/update/:id",
+  /*authMiddleware,*/ categoryController.updateCategory
+);
 
 router.delete(
   "/delete/:id",

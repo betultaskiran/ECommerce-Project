@@ -17,9 +17,15 @@ const productSchema = new mongoose.Schema({
   stock: {
     type: Number,
   },
-  category: {
-    type: mongoose.Schema.Types.ObjectId, // Category modeline referans
-    ref: "Category", // Category modelini burada referans alıyoruz
+  categoryId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category",
+    required: true,
+  },
+  brandId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Brand",
+    required: true,
   },
 });
 

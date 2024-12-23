@@ -9,6 +9,8 @@ const Filters = ({
   handleBrandChange,
   selectedPriceRange = [],
   handlePriceRangeChange,
+  categories,
+  brands,
 }) => {
   return (
     <>
@@ -16,16 +18,16 @@ const Filters = ({
         <Title order={3} className={styles.paperTitle}>
           Categories
         </Title>
-        {["Skincare", "Make-up", "Parfume"].map((category) => (
-          <Checkbox
-            key={category}
-            label={category}
-            name={category}
-            checked={selectedCategories.includes(category)}
-            onChange={(e) => handleCategoryChange(e)}
-            className={styles.checkboxLabel}
-          />
-        ))}
+        {categories?.data?.response &&
+          categories.data.response.map((category) => (
+            <Checkbox
+              key={category._id}
+              label={category.categoryName}
+              checked={selectedCategories.includes(category._id)}
+              onChange={(e) => handleCategoryChange(category._id)}
+              className={styles.checkboxLabel}
+            />
+          ))}
       </Paper>
       <Paper
         shadow="xs"
@@ -36,16 +38,16 @@ const Filters = ({
         <Title order={3} className={styles.paperTitle}>
           Brands
         </Title>
-        {["Clinique", "Dior", "Estee Lauder", "Tom Ford"].map((brand) => (
-          <Checkbox
-            key={brand}
-            label={brand}
-            name={brand}
-            checked={selectedBrands.includes(brand)}
-            onChange={(e) => handleBrandChange(e)}
-            className={styles.checkboxLabel}
-          />
-        ))}
+        {brands?.data?.response &&
+          brands.data.response.map((brand) => (
+            <Checkbox
+              key={brand._id}
+              label={brand.brandName}
+              checked={selectedBrands.includes(brand._id)}
+              onChange={(e) => handleBrandChange(brand._id)}
+              className={styles.checkboxLabel}
+            />
+          ))}
       </Paper>
       <Paper
         shadow="xs"

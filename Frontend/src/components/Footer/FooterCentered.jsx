@@ -32,7 +32,9 @@ export function FooterCentered() {
   return (
     <div className={classes.footer}>
       <div className={classes.inner}>
-        <Button>LOGO</Button>
+        <div style={{ fontSize: "14px", color: "gray", fontWeight: "bold" }}>
+          BETALİVA
+        </div>
 
         <Group className={classes.links}>{items}</Group>
 

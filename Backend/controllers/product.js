@@ -12,8 +12,8 @@ const productController = {
   },*/
   createProduct: async (req, res) => {
     try {
-      const { productName, description, price, stock } = req.body;
-      console.log(req.body);
+      const { productName, description, price, stock, categoryId, brandId } =
+        req.body;
       const imagePath = req.file ? `/uploads/${req.file.filename}` : null; // Resim yolu
       // Resim yolu dahil diğer ürün bilgilerini al
       // const productData = {
@@ -27,6 +27,8 @@ const productController = {
         description,
         price,
         stock,
+        categoryId,
+        brandId,
       });
       res.status(201).send({ success: true, response });
     } catch (e) {
@@ -71,8 +73,8 @@ const productController = {
 
   getProducts: async (req, res) => {
     try {
-      const response = await productService.getProducts();
-      console.log(response, "result");
+      console.log(req.query.categoryIds);
+      const response = await productService.getProducts(req.query);
       res.status(200).send({ success: true, response });
     } catch (e) {
       console.log(e, "error");

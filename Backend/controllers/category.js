@@ -38,7 +38,6 @@ const categoryController = {
   getCategory: async (req, res) => {
     try {
       const response = await categoryService.getCategory(req.params);
-      console.log(response, "result");
       if (!response) {
         return res.status(404).send({ error: "Kategori bulunamadı" });
       }

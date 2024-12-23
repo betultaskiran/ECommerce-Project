@@ -5,14 +5,16 @@ import {
   Group,
   Container,
   Notification,
+  Flex,
   Image,
 } from "@mantine/core";
 import { axiosClient } from "../../components/axiosClient";
+import { useNavigate } from "react-router-dom";
 
 function ListItemsPage() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
-
+  const navigate = useNavigate();
   // Verileri API'den çekme
   const fetchProducts = async () => {
     try {
@@ -38,17 +40,24 @@ function ListItemsPage() {
       setError("Ürün silinirken bir hata oluştu.");
     }
   };
-
+  const handleCreate = () => {
+    navigate("/admin/add-items");
+  };
   // Ürünü güncelleme için yönlendirme (dummy işlem)
   const handleUpdate = (id) => {
     // Güncelleme sayfasına yönlendirme işlemi yapılabilir
     console.log("Update product with id:", id);
-    // navigate(/update/${id}); // Eğer güncelleme sayfası varsa
+    navigate(`/admin/update-items/${id}`); // Eğer güncelleme sayfası varsa
   };
 
   return (
     <Container size="lg">
-      <h1>All Products List</h1>
+      <Flex justify={"space-between"} align={"center"} pb={20}>
+        <h1 style={{ margin: 0 }}>All Product List</h1>
+        <Button size="xs" color="blue" onClick={() => handleCreate()}>
+          Create
+        </Button>
+      </Flex>
 
       {error && (
         <Notification color="red" title="Hata!" onClose={() => setError("")}>
@@ -71,7 +80,11 @@ function ListItemsPage() {
             <tr key={product._id}>
               <td style={{ textAlign: "center" }}>
                 <Image
-                  src={product.image || "https://via.placeholder.com/50"}
+                  src={
+                    product.image
+                      ? "http://localhost:3000" + product.image
+                      : "https://via.placeholder.com/50"
+                  }
                   alt={product.productName}
                   width={50}
                   height={50}
@@ -79,7 +92,7 @@ function ListItemsPage() {
                 />
               </td>
               <td style={{ textAlign: "center" }}>{product.productName}</td>
-              <td style={{ textAlign: "center" }}>{product.category}</td>
+              <td style={{ textAlign: "center" }}>{product.categoryName}</td>
               <td style={{ textAlign: "center" }}>${product.price}</td>
               <td style={{ textAlign: "center" }}>
                 <Group spacing="xs" position="center">

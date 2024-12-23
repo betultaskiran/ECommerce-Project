@@ -28,8 +28,8 @@ export function FeaturesCard({ product, handleProductClick }) {
       {/* Product Details Section */}
       <div className={styles.detailsSection}>
         {/* Product Name */}
-        <Text fz="lg" mt="md">
-          {product.description}
+        <Text fz="lg" fw={700} mt="md">
+          {product.productName}
         </Text>
 
         {/* Rating Section */}

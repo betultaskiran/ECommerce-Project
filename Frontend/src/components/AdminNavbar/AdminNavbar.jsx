@@ -51,16 +51,22 @@ function AdminNavbar() {
       className={styles.navbarGroup}
     >
       <Button
-        leftSection={<IconPlus />}
-        onClick={() => navigate("/admin/add-items")} // Yönlendirme işlemi
-      >
-        Add Items
-      </Button>
-      <Button
         leftSection={<IconList />}
         onClick={() => navigate("/admin/list-items")} // Yönlendirme işlemi
       >
-        List Items
+        Products
+      </Button>
+      <Button
+        leftSection={<IconList />}
+        onClick={() => navigate("/admin/list-categories")} // Yönlendirme işlemi
+      >
+        Categories
+      </Button>
+      <Button
+        leftSection={<IconList />}
+        onClick={() => navigate("/admin/list-brands")} // Yönlendirme işlemi
+      >
+        Brands
       </Button>
       <Button
         leftSection={<IconPackage />}
